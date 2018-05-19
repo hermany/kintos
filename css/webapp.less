@@ -1,0 +1,478 @@
+@import "variables.less";
+
+@h_nav: 42px;
+
+html,
+body {
+  background: @color-bg;
+}
+
+.icn-up {
+  position: absolute;
+  pointer-events: none;
+  font-size: 33px;
+  color: white;
+  text-shadow: 0px -3px 2px #615a5a;
+  top: -29px;
+  right: 0px;
+}
+
+.wa-nav {
+  background-color: #2b3540;
+  border-bottom: 1px solid #798094;
+  box-shadow: 1px 1px 4px #dadada;
+  width: 100%;
+  height: @h_nav;
+  position: fixed;
+  z-index: @z-index;
+
+  .nav-brand {
+    margin: 0;
+    width: 100px;
+    height: 39px;
+    background: url(../images/logo-o.svg) no-repeat center center;
+    background-size: 88%;
+  }
+
+  .nav-inner {
+    //width: 40%;
+    float: right;
+    display: inline-block;
+    margin-right: 5px;
+
+    li {
+      float: left;
+      a {
+        font-size: 13px;
+        color: @blanco;
+        padding: 12px 10px;
+        display: inline-block;
+        margin-left: 10px;
+        cursor: pointer;
+        .font-bold();
+        opacity: 1;
+        text-decoration: none;
+
+        &:hover {
+          opacity: .7;
+        }
+      }
+      .btn-perfil {
+        display: inline-block;
+        float: left;
+        position: relative;
+
+        &.on {
+          color: @verde;
+          .icn {
+            color: @verde;
+          }
+        }
+        .icn {}
+      }
+    }
+  }
+  .perfil {
+    width: 200px;
+    height: auto!important;
+    position: absolute;
+    right: 20px;
+    top: -944px;
+    background: @blanco;
+    border: 1px solid @border-color;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px @sombra-color;
+    opacity: 0;
+    z-index: @z-index -1;
+
+    &.on {
+      top: 44px;
+      opacity: 1;
+    }
+
+
+
+
+    li {
+      a {
+        padding: 7px 15px;
+        display: block;
+        font-size: 15px;
+        text-decoration: none;
+
+        &:hover {
+          background: @azul;
+          color: @blanco;
+        }
+      }
+      &:last-child {
+        border-bottom: 0px;
+        a {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+.pub-principal {
+  margin-top: @h_nav;
+  width: 100%;
+  float: left;
+  overflow: hidden;
+  opacity: 0;
+  transition: all ease .3s;
+
+
+  &.on{
+		opacity: 1;
+		transition: all ease .3s;
+  }
+
+  .pub-sidebar {
+    width: 270px;
+    border-right: 1px solid @border-color;
+    box-shadow: inset -1px 0 0px 0px #fff;
+    height: 100%;
+    background: @blanco-a;
+    position: relative;
+    transition: all ease .4s;
+    float: left;
+
+    &.off {
+      transition: all ease .4s;
+      margin-left: -270px;
+      float: left;
+    }
+
+    .btn-ocultar-sidebar {
+      position: absolute;
+      top: 48%;
+      right: 0;
+      /* height: 50px; */
+      width: 15px;
+      /* letter-spacing: 0.1em; */
+      padding: 20px 0px;
+      background-color: @blanco;
+      border: 1px solid @border-color;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-right: 0px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: @azul;
+        border-color: @azul;
+        color: @blanco;
+      }
+      .icn {
+        position: absolute;
+        top: 10px;
+        right: -3px;
+      }
+
+      &.on {
+        right: -15px;
+        border-radius: 0;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border: 1px solid @border-color;
+
+        .icn {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .seccion {
+      border-bottom: 1px solid @border-color;
+      position: relative;
+      float: left;
+      width: 100%;
+      padding-bottom: 10px;
+      box-shadow: 0px 1px 0px rgb(255, 255, 255, .5);
+
+      .title-seccion {
+        width: 100%;
+        float: left;
+        padding: 10px 10px;
+        text-transform: uppercase;
+        font-size: 11px;
+        margin: 0px;
+        color: @gris-3;
+      }
+
+      ul {
+        li {
+          a {
+            width: 90%;
+            display: inline-block;
+            margin-left: 7px;
+            padding: 0px;
+            font-size: 14px;
+            border-radius: 3px;
+            color: @gris-1;
+            text-decoration: none;
+
+            .icn {
+              font-size: 25px;
+              margin-right: 3px;
+            }
+
+            &:hover {
+              color: @verde-1;
+            }
+
+            &.active {
+              color: @naranja-2;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .pub-body {
+    height: 100%;
+    float: left;
+    transition: all ease .4s;
+
+    &.on {
+      width: 100% !important;
+      transition: all ease .4s;
+    }
+
+    .pub-header {
+      float: left;
+      width: 100%;
+      padding: 10px 15px;
+    }
+
+    .pub-inner {
+      border-radius: @border-box;
+      border: 1px solid @border-color;
+      background-color: @blanco;
+      min-height: 94%;
+      float: left;
+      width: 97%;
+      margin-left: 15px;
+
+      .title {
+        float: left;
+        padding: 12px 15px;
+        margin: 0px;
+
+        .block-date {
+          font-size: 28px;
+          margin-left: 7px;
+          margin-right: 10px;
+          float: left;
+
+          .mes {
+            .font-bold-2();
+          }
+          .ano {
+            color: @gris-1;
+            .font-light();
+          }
+        }
+
+        .total-monto {
+          float: left;
+          padding: 7px 10px;
+          margin-left: 10px;
+          margin-top: 2px;
+          height: 26px;
+          border-radius: 5px;
+          margin-top: 10px;
+          position: relative;
+          background: #bfbfbf;
+          line-height: 16px;
+          color: @blanco;
+
+          label {
+            .font-light();
+            position: absolute;
+            left: 0;
+            color: #777;
+            margin-top: -22px;
+            font-size: 11px;
+          }
+          span {
+            .font-bold();
+          }
+
+          &.total-ingresos {
+            background: #5fd86d;
+            background:@verde-1;
+          }
+          &.total-egresos {
+            background-color: #f19292;
+            background-color: @rojo;
+          }
+
+          &.total-negativo {
+            background-color: @rojo;
+          }
+        }
+      }
+
+      .botones {
+        float: right;
+        position: relative;
+
+        .btn-nueva-accion {
+          float: right;
+          padding: 7px 10px;
+          margin: 15px;
+        }
+        .box-nueva-accion {
+          position: absolute;
+          width: 230px;
+          top: 50px;
+          height: 0;
+          right: 15px;
+          height: auto !important;
+          border: 1px solid red;
+          border-radius: @border-box;
+          border: 1px solid #d8dadc;
+          /* border-radius: 5px; */
+          box-shadow: 0 2px 5px @sombra-color;
+          padding-bottom: 10px;
+          padding-top: 10px;
+          opacity: 0;
+          transition: all ease .4s;
+
+          &.on{
+          	opacity: 1;
+          	// top:50px;
+          	height: auto !important;
+          	transition: all ease .4s;
+          }
+
+
+          .icn-up {
+            top: -28px;
+            right: 10px;
+            text-shadow: 0px -1px 0px #a5a5a5
+          }
+
+          .btn {
+            text-transform: none;
+            .font-regular();
+            font-size: 14px;
+                padding: 3px 15px 3px 7px;
+          }
+
+          ul {
+            li {
+              width: 100%;
+              position: relative;
+              float: left;
+
+              a {
+
+                .icn {
+                  font-size: 18px;
+                  display: inline-block;
+                }
+
+                .icn-egreso {
+                  transform: rotate(270deg);
+                  color:@rojo;
+                }
+
+                .icn-egreso-fijo{
+                	color:@naranja;
+                	transform: rotate(270deg);
+                }                
+                .icn-egreso-deuda{
+                	color:@vino;
+                }
+
+                .icn-ingreso-extra {
+                  transform: rotate(90deg);
+                  color:@verde;
+                }                 
+                .icn-ingreso-fijo {
+                  transform: rotate(90deg);
+                  color:@verde-3;
+                }                
+                .icn-ingreso-prestamo {
+                  color:@verde-2;
+                }                
+                .icn-saldo-banco {
+                  color:@celeste;
+                }
+              }
+
+              .info {
+                border: 1px solid @gris-2;
+                color: @gris-2;
+                font-size: 12px;
+                width: 16px;
+                height: 16px;
+                display: inline-block;
+                text-align: center;
+                border-radius: 25px;
+                line-height: 15px;
+                float: right;
+                margin-right: 10px;
+                margin-top: 10px;
+                cursor: pointer;
+                .font-bold-2();
+
+                &:hover {
+                  background: @azul;
+                  border-color: @azul;
+                  color: @blanco;
+                }
+              }
+
+              &.li-borde {
+                border-bottom: 1px solid @border-color;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal{
+	width: 0px;
+	height: 0px;
+  top:0;
+  left:0;
+	display: inline-block;
+	border-radius: 5px;
+
+	.modal-inner{
+		width: 0px;
+		height: 0px;
+		// border:1px solid @border-color;
+		border-radius: 5px;
+		.box-shadow();
+	}
+
+
+	&.modal-nuevo-egreso{
+    width: 350px;
+    height: 100px;
+    top: 140px;
+    right: 30px;
+    left: auto;
+    .box-shadow();
+
+    .modal-inner{
+    	width: 100%;
+    	height: 100%;
+    	background-color: @blanco;
+    	box-shadow:none;
+    }
+	}
+}
