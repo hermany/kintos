@@ -6,6 +6,7 @@
 	$pub_nom=$fmt->publicacion->get_pub_nombre();
 	$pub_id_cat=$fmt->publicacion->get_pub_id_cat();
 ?>
+
 <div class="pub pub-<?php echo $pub_nom; ?>">
 	<div class="pub-title brand-footer"></div>
 	<div class="pub-inner">

@@ -11,7 +11,6 @@ $(document).ready(function() {
 	$('body').on('click', '.mensaje', function() {
 		video_on();
 	});
-
 	
 });
  

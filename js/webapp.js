@@ -44,27 +44,64 @@ $(function() {
 		 $( ".draggable" ).remove();
 	});
 
-	$('.btn-nueva-accion').click(function(e) {
-		/* Act on the event */
-		e.stopPropagation();
-		$(".box-nueva-accion").toggleClass('on');
+	//iniciar transacciones
+	$(".btn-iniciar-transaccion").click(function(){
+		$(".mensaje-sin-transaccion").addClass('off');
+		cerrar(".mensaje-sin-transaccion",500);
+		$(".agregar-transaccion").addClass('on');
+		$(".title-mes").addClass('on');
 	});
 
-	$('.btn-modal-accion').click(function(e) {
-		/* Act on the event */
-		e.stopPropagation();
-		$(".box-nueva-accion").removeClass('on');
-		var tarea= $(this).attr("tarea");
-		var nombre= $(this).attr("nombre");
-		var contenido = window[tarea];
-		var inner = tpl_modal.replace("{nombre-modal}",nombre);
-		var inner = inner.replace("{modal-contenido}",contenido);
-		// console.log(inner);
-		$("body").append(inner); 
-		$( ".draggable" ).draggable(function(e){
-			e.stopPropagation();
+	//transacciones
+
+	$('#inputFecha').datetimepicker({
+		language:  'es',
+		format: 'dd-mm-yyyy',
+		autoclose: true,
+		minView: 2,
+		minuteStep: 5,
+		weekStart: 1,
+		forceParse: 0,
+		todayBtn: true,
+	});
+	$(".datetimepicker .prev i").removeClass();
+	$(".datetimepicker .next i").removeClass();
+	$(".datetimepicker .prev i").addClass("icn icn-chevron-left");
+	$(".datetimepicker .next i").addClass("icn icn-chevron-right");
+
+	$("#inputMonto").blur(function(){
+		var valor = $(this).val();
+		var numero = parseFloat(valor)
+		var dinero =  numero.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+		// console.log(dinero);
+		if (dinero != "NaN"){
+			$("#inputMonto").val(dinero);
+		}
+	});
+
+	$('.elegir-tipo-transaccion').click(function(event) {
+		var usu = $(this).attr("usu");
+		$(".tipo-transaccion").addClass('on');
+
+		var form_data = new FormData();
+		form_data.append("usu",usu);
+		var ruta = sitio + "modulos/webapp/ajax-elegir-tipo.php";
+		$.ajax({
+		  url:ruta,
+		  type:"post",
+		  data:form_data,
+		  processData: false,
+		  contentType: false,
+		  beforeSend: function () {
+		  	$(".tipo-transaccion").html("<div class='loading on'></div>");
+		  },
+		  success: function(msgx){
+		    console.log(msgx);
+		    $(".tipo-transaccion").html(msgx);
+		  },
+		  complete: function(){
+		  }
 		});
-	 
 	});
 
 });

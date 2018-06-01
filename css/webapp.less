@@ -1,4 +1,5 @@
-@import "variables.less";
+@import (reference) "variables.less";
+@import (reference) "color.less";
 
 @h_nav: 42px;
 
@@ -7,6 +8,7 @@ body {
   background: @color-bg;
 }
 
+//iconos
 .icn-up {
   position: absolute;
   pointer-events: none;
@@ -17,6 +19,41 @@ body {
   right: 0px;
 }
 
+.icn-egreso {
+  color: @blanco;
+  font-size: 18px;
+  line-height: 0px;
+  /* margin-left: -4px; */
+  background: @rojo;
+  border-radius: 20px;
+  width: 16px;
+  height: 16px;
+  transform: rotate(270deg);
+
+  &:before {
+    margin-left: -1px;
+    margin-top: -1px;
+  }
+}
+
+.icn-ingreso {
+  color: @blanco;
+  font-size: 18px;
+  line-height: 0px;
+  /* margin-left: -4px; */
+  background: @verde;
+  border-radius: 20px;
+  width: 16px;
+  height: 16px;
+  transform: rotate(90deg);
+
+  &:before {
+    margin-left: -1px;
+    margin-top: -1px;
+  }
+}
+
+//nav
 .wa-nav {
   background-color: #2b3540;
   border-bottom: 1px solid #798094;
@@ -76,22 +113,19 @@ body {
     width: 200px;
     height: auto!important;
     position: absolute;
-    right: 20px;
+    right: 15px;
     top: -944px;
-    background: @blanco;
-    border: 1px solid @border-color;
+    background: #FFF;
+    border: 1px solid #d8dadc;
     border-radius: 5px;
-    box-shadow: 0px 2px 5px @sombra-color;
+    box-shadow: 0px 1px 18px 0px rgba(109, 100, 100, 0.58);
     opacity: 0;
-    z-index: @z-index -1;
+
 
     &.on {
-      top: 44px;
+      top: 34px;
       opacity: 1;
     }
-
-
-
 
     li {
       a {
@@ -125,9 +159,9 @@ body {
   transition: all ease .3s;
 
 
-  &.on{
-		opacity: 1;
-		transition: all ease .3s;
+  &.on {
+    opacity: 1;
+    transition: all ease .3s;
   }
 
   .pub-sidebar {
@@ -242,237 +276,360 @@ body {
       width: 100% !important;
       transition: all ease .4s;
     }
+  }
+}
 
-    .pub-header {
+.pub-flujo-efectivo {
+  display: initial;
+
+  .pub-header {
+    float: left;
+    width: 100%;
+    padding: 10px 15px;
+  }
+  .pub-inner {
+    border-radius: @border-box; // border: 1px solid @border-color;
+    background-color: @blanco;
+    min-height: 94%;
+    float: left;
+    width: 97%;
+    margin-left: 15px;
+    overflow: hidden;
+
+    .title {
       float: left;
-      width: 100%;
-      padding: 10px 15px;
-    }
+      padding: 12px 15px;
+      margin: 0px;
 
-    .pub-inner {
-      border-radius: @border-box;
-      border: 1px solid @border-color;
-      background-color: @blanco;
-      min-height: 94%;
-      float: left;
-      width: 97%;
-      margin-left: 15px;
-
-      .title {
+      .block-date {
+        font-size: 28px;
+        margin-left: 0px;
+        margin-right: 10px;
         float: left;
-        padding: 12px 15px;
-        margin: 0px;
 
-        .block-date {
-          font-size: 28px;
-          margin-left: 7px;
-          margin-right: 10px;
-          float: left;
+        .mes {
+          .font-bold-2();
+        }
+        .ano {
+          color: @gris-1;
+          .font-light();
+        }
+      }
+    }
+    .title-mes {
+      opacity: 0;
+      transition: all ease .3s;
 
-          .mes {
-            .font-bold-2();
-          }
-          .ano {
-            color: @gris-1;
-            .font-light();
-          }
+      &.on {
+        opacity: 1;
+        transition: all ease .3s;
+      }
+    }
+    .estados {
+      float: right;
+      padding: 10px;
+      margin-right: 6px;
+      margin-top: 5px;
+      display: inline-block;
+      opacity: 0;
+      transition: all ease .3s;
+
+      &.on {
+        opacity: 1;
+        transition: all ease .3s;
+      }
+
+      .total-monto {
+        float: left;
+        padding: 7px 10px;
+        margin-left: 10px;
+        margin-top: 2px;
+        height: 26px;
+        border-radius: 5px;
+        margin-top: 10px;
+        position: relative;
+        background: #bfbfbf;
+        line-height: 16px;
+        color: @blanco;
+
+        label {
+          .font-light();
+          position: absolute;
+          left: 0;
+          color: #777;
+          margin-top: -22px;
+          font-size: 11px;
+        }
+        span {
+          .font-bold();
         }
 
-        .total-monto {
-          float: left;
-          padding: 7px 10px;
-          margin-left: 10px;
-          margin-top: 2px;
-          height: 26px;
-          border-radius: 5px;
-          margin-top: 10px;
-          position: relative;
-          background: #bfbfbf;
-          line-height: 16px;
-          color: @blanco;
+        &.total-ingresos {
+          background: #5fd86d;
+          background: @verde-1;
+        }
+        &.total-egresos {
+          background-color: #f19292;
+          background-color: @rojo;
+        }
 
-          label {
-            .font-light();
-            position: absolute;
-            left: 0;
-            color: #777;
-            margin-top: -22px;
-            font-size: 11px;
-          }
-          span {
-            .font-bold();
-          }
+        &.total-negativo {
+          background-color: @rojo;
+        }
+      }
+    }
 
-          &.total-ingresos {
-            background: #5fd86d;
-            background:@verde-1;
-          }
-          &.total-egresos {
-            background-color: #f19292;
-            background-color: @rojo;
-          }
+    .pub-transacciones {
+      float: left;
+      width: 100%;
+      height: 83vh;
+      display: inline-block;
+      position: relative;
 
-          &.total-negativo {
-            background-color: @rojo;
-          }
+      .mensaje-sin-transaccion {
+        width: 400px;
+        display: inline-block;
+        position: absolute;
+        margin-left: -200px;
+        left: 50%;
+        text-align: center;
+        top: 25%;
+        .font-light-lt();
+        transition: all ease-out .4s;
+        opacity: 1;
+        color: @gris-2;
+
+
+        &.off {
+          transition: all ease-out .4s;
+          opacity: 0;
         }
       }
 
-      .botones {
-        float: right;
+      .agregar-transaccion {
+        background: @gris-6;
+        width: 96.7%;
+        margin-left: 15px; // padding: 3px 5px;
+        color: white;
+        border-radius: 4px;
+        float: left;
+        transition: all ease .4s;
+        opacity: 0;
+        pointer-events: none;
         position: relative;
 
-        .btn-nueva-accion {
-          float: right;
-          padding: 7px 10px;
-          margin: 15px;
-        }
-        .box-nueva-accion {
-          position: absolute;
-          width: 230px;
-          top: 50px;
-          height: 0;
-          right: 15px;
-          height: auto !important;
-          border: 1px solid red;
-          border-radius: @border-box;
-          border: 1px solid #d8dadc;
-          /* border-radius: 5px; */
-          box-shadow: 0 2px 5px @sombra-color;
-          padding-bottom: 10px;
-          padding-top: 10px;
-          opacity: 0;
+        &.on {
           transition: all ease .4s;
+          opacity: 1;
+          pointer-events: auto;
+        }
 
-          &.on{
-          	opacity: 1;
-          	// top:50px;
-          	height: auto !important;
-          	transition: all ease .4s;
+        .elegir-icon {
+          border-right: 1px solid @gris-5;
+          float: left;
+          padding: 3px;
+          cursor: pointer;
+
+          .icn {
+            font-size: 18px;
+            margin: 2px 2px;
+            display: inline-block; // opacity: .5;
+            transition: all ease .2s;
+            color: @gris-7;
           }
 
-
-          .icn-up {
-            top: -28px;
-            right: 10px;
-            text-shadow: 0px -1px 0px #a5a5a5
-          }
-
-          .btn {
-            text-transform: none;
-            .font-regular();
-            font-size: 14px;
-                padding: 3px 15px 3px 7px;
-          }
-
-          ul {
-            li {
-              width: 100%;
-              position: relative;
-              float: left;
-
-              a {
-
-                .icn {
-                  font-size: 18px;
-                  display: inline-block;
-                }
-
-                .icn-egreso {
-                  transform: rotate(270deg);
-                  color:@rojo;
-                }
-
-                .icn-egreso-fijo{
-                	color:@naranja;
-                	transform: rotate(270deg);
-                }                
-                .icn-egreso-deuda{
-                	color:@vino;
-                }
-
-                .icn-ingreso-extra {
-                  transform: rotate(90deg);
-                  color:@verde;
-                }                 
-                .icn-ingreso-fijo {
-                  transform: rotate(90deg);
-                  color:@verde-3;
-                }                
-                .icn-ingreso-prestamo {
-                  color:@verde-2;
-                }                
-                .icn-saldo-banco {
-                  color:@celeste;
-                }
-              }
-
-              .info {
-                border: 1px solid @gris-2;
-                color: @gris-2;
-                font-size: 12px;
-                width: 16px;
-                height: 16px;
-                display: inline-block;
-                text-align: center;
-                border-radius: 25px;
-                line-height: 15px;
-                float: right;
-                margin-right: 10px;
-                margin-top: 10px;
-                cursor: pointer;
-                .font-bold-2();
-
-                &:hover {
-                  background: @azul;
-                  border-color: @azul;
-                  color: @blanco;
-                }
-              }
-
-              &.li-borde {
-                border-bottom: 1px solid @border-color;
-                padding-bottom: 5px;
-                margin-bottom: 5px;
-              }
+          &:hover {
+            .icn {
+              // opacity: .8;
+              transition: all ease .2s;
+              color: @blanco;
             }
           }
+        }
+        .fe-btn {
+          font-size: 12px;
+          /* line-height: 15px; */
+          .font-regular-lt();
+          border: 1px solid @gris-5;
+          color: @gris-7;
+          padding: 3px 7px 1px 7px;
+          float: left;
+          border-radius: 4px;
+          margin-left: 6px;
+          margin-top: 6px;
+          background: @gris-6;
+          cursor: pointer;
+
+          &:hover {
+            color: @blanco;
+            border-color: @gris-7;
+          }
+        }
+
+        .fe-tipo-moneda {
+          .font-bold-lt();
+        }
+        .fe-tipo-transaccion {}
+
+        .fe-quien {
+          margin-top: 8px;
+          float: left;
+          font-size: 15px;
+          margin-right: 7px;
+          cursor: pointer;
+          color: @gris-7;
+
+          .icn {
+            float: left;
+            margin-top: -2px;
+          }
+          &:hover {
+            color: @blanco;
+            .icn {
+              color: @blanco;
+            }
+          }
+        }
+
+        #inputMonto {
+          .font-regular-lt();
+          border: 0;
+          background: @gris-6;
+          color: @blanco;
+          font-size: 19px;
+          margin: 4px 10px 0px;
+          width: 90px;
+          float: left;
+        }
+
+        #inputDetalle {
+          .font-regular-lt();
+          border: 0;
+          background: @gris-6;
+          color: @blanco;
+          font-size: 15px;
+          margin: 7px 0px 0px 10px;
+          width: 40%;
+          float: left;
+        }
+
+        .calendar {
+          margin-left: 7px;
+          margin-top: 5px;
+          display: inline-block;
+          color: @gris-7;
+
+          .icn {
+            float: left;
+            font-size: 17px;
+          }
+
+          &:hover {
+            .icn {
+              color: @blanco;
+            }
+          }
+          input {
+            background: transparent;
+            border: 0;
+            color: @gris-7;
+            margin-top: 5px;
+            margin-left: 3px;
+            float: left;
+            .font-regular-lt();
+            font-size: 13px;
+            width: 80px;
+            cursor: pointer;
+          }
+        }
+        .btn-agregar-transaccion {
+          float: right;
+          margin-top: 4px;
+          margin-right: 4px;
+          display: inline-block;
+          padding: 2px 4px 2px 5px;
+          font-size: 15px;
+          border-radius: 4px;
+          border-color: #596580;
         }
       }
     }
   }
 }
 
-.modal{
-	width: 0px;
-	height: 0px;
-  top:0;
-  left:0;
-	display: inline-block;
-	border-radius: 5px;
+.tipo-transaccion {
+  position: absolute;
+  z-index: 10;
+  width: 300px;
+  min-height: 0px;
+  display: inline-block;
+  background: @gris-8;
+  /* border: 1px solid red; */
+  top: 32px;
+  border-radius: 6px;
+  left: 0px; // box-shadow: 0px 1px 18px 0px rgba(109, 100, 100, 0.58);
+  .box-shadow();
+  transition: all ease .2s;
 
-	.modal-inner{
-		width: 0px;
-		height: 0px;
-		// border:1px solid @border-color;
-		border-radius: 5px;
-		.box-shadow();
-	}
+  &.on {
+    min-height: 50px;
+    transition: all ease .2s;
+  }
 
+  .tipos-botones {
+    position: absolute;
+    width: 100%;
+    /* margin: 5px; */
+    // border-top: 1px solid @gris-5;
+    bottom: 0;
+    text-align: center;
 
-	&.modal-nuevo-egreso{
-    width: 350px;
-    height: 100px;
-    top: 140px;
-    right: 30px;
-    left: auto;
-    .box-shadow();
+    .btn {
+      padding: 5px 46px;
+      margin: 10px 0;
+      font-size: 14px;
+      opacity: .7;
 
-    .modal-inner{
-    	width: 100%;
-    	height: 100%;
-    	background-color: @blanco;
-    	box-shadow:none;
+      &.on {
+        opacity: 1;
+      }
+
+      .icn {
+        position: absolute;
+        top: 7px;
+        left: 8px;
+      }
     }
-	}
+  }
+
+  .block {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    height: 250px;
+    margin-bottom: 50px;
+    position: relative;
+    overflow-y: auto;
+
+    .header {
+      padding: 10px;
+      width: 100%;
+      display: block;
+
+      label {
+        float: left;
+        font-size: 12px;
+        line-height: 15px;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      .btns{
+        float: right;
+        
+      }
+    }
+  }
+
+  .block-egreso {}
 }

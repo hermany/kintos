@@ -46,7 +46,7 @@ $nombre_completo = _USU_NOMBRE_COMPLETO;
     </li>
   </ul>
   <div class="perfil">
-  	<i class="icn icn-up icn-arrow-o-up"></i>
+  	<!-- <i class="icn icn-up icn-arrow-o-up"></i> -->
   	<ul>
   		<li><a href="">Ver perfil</a></li>
   		<li><a href="">Cuenta</a></li>
