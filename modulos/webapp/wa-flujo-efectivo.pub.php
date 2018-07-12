@@ -35,8 +35,9 @@
 				  $btn_crear .="<a class='elegir-icon elegir-tipo-transaccion'>";
 				  $btn_crear .="	<i class='icn icn-plus-circle'></i>";
 				  $btn_crear .="</a>";
-				  $btn_crear .="<div class='tipo-transaccion' usu='".$usu."'></div>";
+				  $btn_crear .="<div class='tipo-bloque tipo-transaccion' usu='".$usu."'></div>";
 				  $btn_crear .="<span class='fe-btn fe-tipo-moneda'>Bs.</span>";
+				  $btn_crear .="<div class='tipo-bloque tipo-moneda' usu='".$usu."'></div>";
 				  $btn_crear .="<input tipe='text' placeholder='0.00' id='inputMonto' name='inputMonto' />";
 				  $btn_crear .="<input tipe='text' placeholder='Detalle' id='inputDetalle' name='inputDetalle' />";
 				  $btn_crear .="<a class='fe-quien' usu='".$usu."'><i class='icn icn-user'></i> <span>Yo</span></a>";

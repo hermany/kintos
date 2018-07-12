@@ -25,6 +25,10 @@ $(function() {
 		$(".pub-principal .pub-body").width(w_pbody);
 	};
 
+	$(window).resize(function(event) {
+		resize();
+	});
+
 	//botones webapp
 	$('.btn-perfil').click(function( ) {
 		$(".perfil").toggleClass('on');
@@ -81,6 +85,7 @@ $(function() {
 
 	$('.elegir-tipo-transaccion').click(function(event) {
 		var usu = $(this).attr("usu");
+		$(".tipo-bloque").removeClass('on');
 		$(".tipo-transaccion").addClass('on');
 
 		var form_data = new FormData();
@@ -98,6 +103,11 @@ $(function() {
 		  success: function(msgx){
 		    console.log(msgx);
 		    $(".tipo-transaccion").html(msgx);
+		    $(".tipo-transaccion").mouseleave(function(event) {
+		    	setTimeout(function() {
+            $(".tipo-transaccion").removeClass('on');
+          },1000);
+		    });
 		  },
 		  complete: function(){
 		  }
